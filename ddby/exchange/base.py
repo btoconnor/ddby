@@ -38,8 +38,6 @@ class Exchange(object):
 
         value = int(round(money.amount / rate, 0))
 
-        print value
-
         return Money(value, currency)
 
     def get_rate(self, original, desired):
