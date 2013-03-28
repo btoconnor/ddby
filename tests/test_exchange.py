@@ -27,10 +27,7 @@ class TestExchange(unittest.TestCase):
 
         actual = exchange.exchange_from(m, 'EUR')
 
-        print actual
-
         assert expected == actual
-
 
 if __name__ == '__main__':
     unittest.main()
