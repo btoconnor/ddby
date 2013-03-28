@@ -38,7 +38,7 @@ Example:
     >>> m = Money(500, 'USD') # $5.00 USD
     >>> exchange = static.StaticExchange(rates)
 
-    >>> print exchange->exchange_to(m, 'EUR')
+    >>> print exchange.exchange_to(m, 'EUR')
     €6.50 EUR
 
 ### Making your own exchange
