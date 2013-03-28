@@ -2,21 +2,25 @@
 
 This library provides a simple way for representing and dealing with money in python.
 
-ddby internally represents money as integers (not Decimal objects).
+ddby internally represents money as integers, making it easy to store in databases and port to other applications.
 
 Example:
+
     from ddby import Money
     m = Money(500, 'USD')
 
     print int(m)
+	>>> 500
     print float(m)
+	>>> 5.0
 
 ### Exchanging currencies
-ddby makes it easy to exchange money from one currency to another.
+ddby makes it easy to exchange money from one currency to another with the notion of an 'exchange'.
 
-The ability to exchange currencies with static rates is provided in the package.
+The ability to exchange currencies with static rates is provided in the library.
 
 Example:
+
     from ddby import Money, Currency
     from ddby.exchange import static
 
@@ -27,8 +31,22 @@ Example:
     print exchange->exchange_to(m, 'EUR')
     >>> €6.50 EUR
 
-If you want to make your own exchange based off more dynamic values (such as from a database), it's trivial to do so.
+### Making your own exchange
+For all but the most trivial applications, a static exchange is not suitable.  ddby makes it trivial to provide an interface
+to make your own exchange.  Simply subclass the Exchange object from ddby.exchange.base and implement a ```get_rate``` method
+which returns the rate from original -> desired.  From there, you can instantiate your new exchange and call ```exchange_to()```
+or ```exchange_from```
 
-Simple subclass exchange.base Exchange and implement a get_rate method which returns the exchange rate from original to desired.
+Example:
 
-    
+    # The worst currency exchange in the world:
+	from ddby.exchange.base import Exchange
+
+    class MyExchange(Exchange):
+	    def get_rate(self, original, desired):
+		    return 1.0
+
+
+This exchange would simply convert 1 for 1 of every currency in the world.  Not terribly applicable, but it illustrates how
+easy it is to implement your own exchange, either from a database, a web api, or a random number generator.
+
