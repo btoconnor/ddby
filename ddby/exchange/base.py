@@ -22,7 +22,9 @@ class Exchange(object):
 
         rate = self.get_rate(money.currency.code, currency.code)
 
-        return Money(money.amount * rate, currency)
+        value = int(round(money.amount * rate, 0))
+
+        return Money(value, currency)
 
     def exchange_from(self, money, currency_code):
         """Perform a symmetric conversion of a Money object to another currency.
@@ -32,9 +34,13 @@ class Exchange(object):
         if money.currency == currency:
             return money
 
-        rate = self.get_rate(money.currency.code, currency.code)
+        rate = self.get_rate(currency.code, money.currency.code)
 
-        return Money(money.amount / rate, currency)
+        value = int(round(money.amount / rate, 0))
+
+        print value
+
+        return Money(value, currency)
 
     def get_rate(self, original, desired):
         """Get the rate in order to convert original
