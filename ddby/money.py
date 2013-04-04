@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from .error import InvalidOperationException
-from .currency import get_currency, Currency
+from .currency import get_currency
 
 __all__ = ['Money']
 
@@ -88,7 +88,7 @@ class Money(object):
     def __repr__(self):
         return u"Money<{0}, {1}>".format(
             self.amount,
-            self.currency_code
+            self.currency.code
             ).encode('utf-8')
 
     def __nonzero__(self):
