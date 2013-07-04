@@ -33,8 +33,14 @@ class Currency(object):
 # TODO: Add more currencies from ISO 4217
 
 _CURRENCIES[u'AUD'] = Currency(u'AUD', u'Australian Dollar', u"$", 2)
+_CURRENCIES[u'BRL'] = Currency(u'BRL', u'Brazilian Real', u"R$", 2)
 _CURRENCIES[u'CAD'] = Currency(u'CAD', u'Canadian Dollar', u"$", 2)
+_CURRENCIES[u'CHF'] = Currency(u'CHF', u'Swiss Franc', u"CHF", 2)
+_CURRENCIES[u'CZK'] = Currency(u'CZK', u'Czech Koruna', u"K\u010d", 2)
 _CURRENCIES[u'EUR'] = Currency(u'EUR', u'Euro', u"\u20AC", 2)
 _CURRENCIES[u'GBP'] = Currency(u'GBP', u'Pound Sterling', u"\u00A3", 2)
-_CURRENCIES[u'JPY'] = Currency(u'JPY', u'Yen', u'\u00A5', 0) 
+_CURRENCIES[u'ILS'] = Currency(u'ILS', u'Israel Shekel', u"\u20AA", 2)
+_CURRENCIES[u'JPY'] = Currency(u'JPY', u'Yen', u'\u00A5', 0)
+_CURRENCIES[u'MXN'] = Currency(u'MXN', u'Mexican Peso', u"$", 2)
+_CURRENCIES[u'NZD'] = Currency(u'NZD', u'New Zealand Dollar', u"$", 2)
 _CURRENCIES[u'USD'] = Currency(u'USD', u'United States Dollar', u'$', 2)
