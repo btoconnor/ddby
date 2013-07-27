@@ -13,7 +13,7 @@ class StaticExchange(Exchange):
         An example:
         values = {'USD': {'GBP': 1.5, 'EUR': 1.3},
                   'GBP': {'USD': 0.7, 'EUR': 0.9},
-                  'EUR'L {'USD': 0.8, 'GBP': 1.1}
+                  'EUR': {'USD': 0.8, 'GBP': 1.1}
                  }
 
         The above example would provide exchange rates for
