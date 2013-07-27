@@ -69,5 +69,29 @@ class TestMoney(unittest.TestCase):
         actual = m2 - m1
         assert actual == expected
 
+    def test_inversion_on_positive_amount(self):
+        m = Money(500, 'USD')
+
+        expected = Money(-500, 'USD')
+        actual = m.get_inverse()
+
+        assert expected == actual
+
+    def test_inversion_on_negative_amount(self):
+        m = Money(-500, 'USD')
+
+        expected = Money(500, 'USD')
+        actual = m.get_inverse()
+
+        assert expected == actual
+
+    def test_inversion_on_zero_amount(self):
+        m = Money(0, 'USD')
+
+        expected = Money(0, 'USD')
+        actual = m.get_inverse()
+
+        assert expected == actual
+
 if __name__ == '__main__':
     unittest.main()

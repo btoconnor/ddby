@@ -15,6 +15,14 @@ class Money(object):
         self.amount = self._get_amount(amount, currency.precision)
         self.currency = currency
 
+    def get_inverse(self):
+        """Return a Money object with amount inverted.
+
+        If the amount is positive, this will return a negative amount,
+        and if the amount is negative, this will return a positive amount.
+        """
+        return Money(-self.amount, self.currency)
+
     # Override functions to cast to data types
     def __int__(self):
         "Cast the Money object to an int"
