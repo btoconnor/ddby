@@ -32,7 +32,7 @@ class Money(object):
         "Cast the Money object to a float"
         # TODO: make sure the rounding is proper based on precision
         return round(
-            float(self.amount / pow(10, self.currency.precision) ),
+            float(self.amount) / pow(10, self.currency.precision),
             self.currency.precision)
 
     # Override numeric operations
