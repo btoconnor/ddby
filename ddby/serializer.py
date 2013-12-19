@@ -12,9 +12,6 @@ class Serializer(object):
     trouble.  This is really so that you can exchange
     monetary values between stacks that communicate over
     network protocols.
-
-    Note: precision is included in anticipation of 
-    arbitrary precision which is planned in the near future.
     """
     VERSION = 1
 
