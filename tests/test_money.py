@@ -20,14 +20,14 @@ class TestMoney(unittest.TestCase):
         expected = 2500
 
         m = Money(initial, 'USD')
-        assert m.amount == expected
+        assert m.get_amount() == expected
 
     def test_passing_int_uses_exact(self):
         initial = 2500
         expected = 2500
 
         m = Money(initial, 'USD')
-        assert m.amount == expected
+        assert m.get_amount() == expected
 
     def test_using_currency_without_precision_int(self):
         amount = 2500
@@ -36,14 +36,14 @@ class TestMoney(unittest.TestCase):
         # Yen has no fractional amounts
         m = Money(amount, 'JPY')
 
-        assert m.amount == expected
+        assert m.get_amount() == expected
 
     def test_using_currency_without_precision_float(self):
         amount = 2500.0
         expected = 2500
         m = Money(amount, 'JPY')
 
-        assert m.amount == expected
+        assert m.get_amount() == expected
 
     def test_presence_of_value_equates_to_true(self):
         m = Money(100, 'USD')

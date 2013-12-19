@@ -57,6 +57,25 @@ class TestExchange(unittest.TestCase):
 
         assert actual == expected
 
+    def test_serialize_with_fractional_precision(self):
+        m = Money(40003, 'USD', precision=3)
+        expected = '1:40003:USD:3' # 40.003 USD
+
+        serializer = Serializer()
+        actual = serializer.serialize(m)
+
+        assert actual == expected, "{0} != {1}".format(actual, expected)
+
+    def test_unserialize_with_fractional_precision(self):
+        string = "1:50003:USD:4"
+        expected = Money(50003, 'USD', precision=4)
+        serializer = Serializer()
+
+        actual = serializer.unserialize(string)
+
+        assert expected == actual
+
+
 if __name__ == '__main__':
     unittest.main()
 

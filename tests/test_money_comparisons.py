@@ -26,11 +26,36 @@ class TestMoneyComparison(unittest.TestCase):
 
         assert not m1 < m2
 
-    
+    def test_values_differing_by_fractional_amounts_are_not_equal(self):
+        m1 = Money(400, 'USD')
+        m2 = Money(40001, 'USD', 4)
 
-    
+        assert m1 != m2, "Values with fractions of a penny are not equal"
 
+    def test_values_equal_but_different_precisions_are_still_equal(self):
+        m1 = Money(400, 'USD')
+        m2 = Money(40000, 'USD', 4)
 
+        assert m1 == m2, \
+            "Values that are equivalent but of different precisions are still equal"
+
+    def test_materialized_amounts_are_less_than_amounts_with_fractions(self):
+        m1 = Money(400, 'USD')
+        m2 = Money(40001, 'USD', 4)
+
+        assert m1 < m2
+
+    def test_fractional_amounts_are_greater_than_materialized(self):
+        m1 = Money(400, 'USD')
+        m2 = Money(40001, 'USD', 4)
+
+        assert m2 > m1
+
+    def test_fractional_equivalents_are_equivalent(self):
+        m1 = Money(40001, 'USD', 4)
+        m2 = Money(40001, 'USD', 4)
+
+        assert m1 == m2
 
 if __name__ == '__main__':
     unittest.main()

@@ -22,9 +22,9 @@ class Serializer(object):
         "Convert a money object into a serialized value"
         return "{0}:{1}:{2}:{3}".format(
             self.VERSION,
-            money.amount,
+            money.precise_amount,
             money.currency.code,
-            money.currency.precision
+            money.precision
         )
 
     def unserialize(self, money_string):
@@ -40,5 +40,9 @@ class Serializer(object):
 
         version, amount, currency_code, precision = results
 
-        return Money(int(amount), currency_code)
+        return Money(
+            int(amount),
+            currency_code,
+            precision=int(precision)
+        )
             

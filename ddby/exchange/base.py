@@ -23,7 +23,7 @@ class Exchange(object):
         rate = self.get_rate(money.currency.code, currency.code)
         rate = self._scale_rate(rate, money.currency, currency)
 
-        value = int(round(money.amount * rate, 0))
+        value = int(round(money.get_amount() * rate, 0))
 
         return Money(value, currency)
 
@@ -38,7 +38,7 @@ class Exchange(object):
         rate = self.get_rate(currency.code, money.currency.code)
         rate = self._scale_rate(rate, currency, money.currency)
 
-        value = int(round(money.amount / rate, 0))
+        value = int(round(money.get_amount() / rate, 0))
 
         return Money(value, currency)
 

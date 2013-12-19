@@ -30,6 +30,37 @@ However, instantiating a Money object around each of these casts is transitive:
 True
 ```
 
+### Fractional amounts
+In certain applications, it makes sense to deal with monetary values in fractions
+of a whole value.  For instance, you might have $5.005 USD, and when you add that to
+$3.005 USD, you would want to get $8.001 USD.  ddby supports arbitrary precision on
+Money objects, which allows you to represent these fractional values with an optional
+precision argument.
+
+Example:
+
+```python
+>>> from ddby import Money
+>>> m1 = Money(50005, 'USD', precision=3) # We've got 3 precision units rather than a standard 2 for USD
+>>> m2 = Money(30005, 'USD', precision=3)
+>>> m3 = m1 + m2
+>>> print m3.materialize()
+$80.01 USD
+```
+
+Materializing a Money object will return a new Money object with any fractional values rounded
+away to the nearest whole value of a currency.
+
+Example:
+
+```python
+>>> m1 = Money(50002, 'USD', precision=3)
+>>> m2 = Money(30002, 'USD', precision=3)
+>>> m3 = m1 + m2
+>>> print m3.materialize()
+$80.00 USD
+```
+
 ### Exchanging currencies
 ddby makes it easy to exchange money from one currency to another with the notion of an 'exchange'.
 
