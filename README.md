@@ -32,8 +32,8 @@ True
 
 ### Fractional amounts
 In certain applications, it makes sense to deal with monetary values in fractions
-of a whole value.  For instance, you might have $5.005 USD, and when you add that to
-$3.005 USD, you would want to get $8.001 USD.  ddby supports arbitrary precision on
+of a whole value.  For instance, you might have $50.005 USD, and when you add that to
+$30.005 USD, you would want to get $80.01 USD.  ddby supports arbitrary precision on
 Money objects, which allows you to represent these fractional values with an optional
 precision argument.
 
