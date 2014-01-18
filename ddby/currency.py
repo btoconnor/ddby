@@ -9,6 +9,8 @@ def get_currency(currency_code):
 class Currency(object):
     "Class representing a currency, such as USD, or GBP"
 
+    __slots__ = ['code', 'name', 'symbol', 'precision']
+
     def __init__(self, code, name, symbol, precision):
         self.code = code
         self.name = name

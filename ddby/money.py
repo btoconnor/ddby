@@ -7,18 +7,21 @@ __all__ = ['Money']
 class Money(object):
     "An object representing money"
 
+    __slots__ = ['precise_amount', 'currency', 'precision']
+
     def __init__(self, amount, currency, precision=None):
         if isinstance(currency, basestring):
             # Currency code was passed in.  Go look it up.
             currency = get_currency(currency)
 
-        self.precise_amount = self._get_amount(amount, currency.precision)
         self.currency = currency
 
         if precision:
             self.precision = precision
         else:
             self.precision = self.currency.precision
+
+        self.precise_amount = self._get_amount(amount, self.precision)
 
     def get_inverse(self):
         """Return a Money object with amount inverted.
