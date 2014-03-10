@@ -45,7 +45,7 @@ Example:
 >>> m2 = Money(30005, 'USD', precision=3)
 >>> m3 = m1 + m2
 >>> print m3.materialize()
-$80.01 USD
+'$80.01 USD'
 ```
 
 Materializing a Money object will return a new Money object with any fractional values rounded
@@ -58,7 +58,7 @@ Example:
 >>> m2 = Money(30002, 'USD', precision=3)
 >>> m3 = m1 + m2
 >>> print m3.materialize()
-$80.00 USD
+'$80.00 USD'
 ```
 
 ### Exchanging currencies
@@ -77,7 +77,7 @@ Example:
 >>> exchange = static.StaticExchange(rates)
 
 >>> print exchange.exchange_to(m, 'EUR')
-€6.50 EUR
+'€6.50 EUR'
 ```
 
 ### Making your own exchange
