@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from .error import InvalidOperationException
 from .currency import get_currency
 
 __all__ = ['Money']
@@ -76,7 +75,7 @@ class Money(object):
         as a result.
         """
         if precision_level < self.currency.precision:
-            raise InvalidOperationException("Cannot round to a precision less than the currency precision")
+            raise ValueError("Cannot round to a precision less than the currency precision")
 
         if precision_level == self.precision:
             return self
@@ -149,7 +148,7 @@ class Money(object):
         return u"{0}{1:.2f} {2}".format(
             self.currency.symbol,
             float(self), self.currency.code
-            ).encode('utf-8')
+        ).encode('utf-8')
     
     def __unicode__(self):
         return u"{0}{1:.2f} {2}".format(
@@ -162,7 +161,7 @@ class Money(object):
             self.precise_amount,
             self.currency.code,
             self.precision
-            ).encode('utf-8')
+        ).encode('utf-8')
 
     def __nonzero__(self):
         return bool(self.precise_amount)
@@ -170,7 +169,7 @@ class Money(object):
     # Helper functions
     def _assert_same_currency(self, currency):
         if self.currency != currency:
-            raise InvalidOperationException("Currencies are not the same")
+            raise ValueError("Currencies are not the same")
 
     def _get_amount(self, amount, precision):
         if isinstance(amount, int):
@@ -178,5 +177,5 @@ class Money(object):
         elif isinstance(amount, float):
             return int(amount * pow(10, precision))
         else:
-            raise InvalidOperationException("Amount is not an int or float")
+            raise ValueError("Amount is not an int or float")
             

@@ -3,7 +3,6 @@ import unittest
 
 from ddby import Money, Currency, get_currency
 from ddby.serializer import Serializer
-from ddby.error import IncorrectSerializeFormat
 
 class TestExchange(unittest.TestCase):
 
@@ -32,7 +31,7 @@ class TestExchange(unittest.TestCase):
         serializer = Serializer()
 
         self.assertRaises(
-            IncorrectSerializeFormat,
+            ValueError,
             serializer.unserialize,
             string
         )
@@ -43,7 +42,7 @@ class TestExchange(unittest.TestCase):
         serializer = Serializer()
 
         self.assertRaises(
-            IncorrectSerializeFormat,
+            ValueError,
             serializer.unserialize,
             string
         )

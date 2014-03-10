@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 from .money import Money
-from .error import IncorrectSerializeFormat
 
 class Serializer(object):
     """Serialize a Money object for sending over the wire.
@@ -28,12 +27,12 @@ class Serializer(object):
         "Given a string, return a money object that it represents."
         results = money_string.split(':')
         if len(results) != 4:
-            raise IncorrectSerializeFormat("String {0} is of incorrect format to parse".format(money_string))
+            raise ValueError("String {0} is of incorrect format to parse".format(money_string))
 
         try:
             amount = int(results[1])
         except ValueError:
-            raise IncorrectSerializeFormat("Amount {0} is not an integer".format(results[1]))
+            raise ValueError("Amount {0} is not an integer".format(results[1]))
 
         version, amount, currency_code, precision = results
 
@@ -42,4 +41,3 @@ class Serializer(object):
             currency_code,
             precision=int(precision)
         )
-            

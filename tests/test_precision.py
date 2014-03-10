@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import unittest
 
-from ddby import Money, InvalidOperationException
+from ddby import Money
 
 class TestPrecision(unittest.TestCase):
 
@@ -34,7 +34,7 @@ class TestPrecision(unittest.TestCase):
     def test_exception_throw_when_rounding_to_lower_precision_than_currency(self):
         m1 = Money(400, 'USD')
 
-        self.assertRaises(InvalidOperationException, m1.round_to, 1)
+        self.assertRaises(ValueError, m1.round_to, 1)
 
     def test_materialized_fractional_amounts(self):
         m1 = Money(400, 'USD')
