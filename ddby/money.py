@@ -31,17 +31,12 @@ class Money(object):
         return Money(-self.precise_amount, self.currency, self.precision)
 
     def get_amount(self):
-        """Returns a materialized amount represented by this money object.
-
-        return: Money
-        """
+        "Returns a materialized amount represented by this money object."
         return self.materialize().precise_amount
 
     def materialize(self):
         """Returns a money object that has been rounded to the natural
         precision level of the currency it represents.
-
-        This is an alias for ```get_amount()``` for readability.
         """
         return self.round_to(self.currency.precision)
 
@@ -67,11 +62,11 @@ class Money(object):
         """Return a Money object that is rounded to the specified
         level of precision.
 
-        This will throw an InvalidOperationException if you attempt
+        This will throw an ValueError if you attempt
         to round a money object to a precision that is lower than
         the currency in which it is representing.  For instance,
         if you try and round a USD monetary value to precision level 1,
-        that doesn't make any sense, and this will throw an exception
+        that doesn't make any sense, and this will raise an exception
         as a result.
         """
         if precision_level < self.currency.precision:
