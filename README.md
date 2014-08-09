@@ -4,6 +4,8 @@ This library provides a simple way for representing and dealing with money in py
 
 ddby internally represents money as integers, making it easy to store in databases and port to other applications.
 
+[![Build Status](https://travis-ci.org/btoconnor/ddby.svg?branch=master)](https://travis-ci.org/btoconnor/ddby)
+
 Example:
 
 ```python
