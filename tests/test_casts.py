@@ -30,6 +30,13 @@ class TestCasts(unittest.TestCase):
 
         assert actual == expected, "{0} != {1}".format(actual, expected)
 
+    def test_cast_to_int(self):
+        m = Money(4031, 'USD')
+
+        expected = 4031
+        actual = int(m)
+
+        assert actual == expected
 
 if __name__ == '__main__':
     unittest.main()

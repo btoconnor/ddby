@@ -57,5 +57,18 @@ class TestMoneyComparison(unittest.TestCase):
 
         assert m1 == m2
 
+    def test_varying_fractional_amounts_less_than(self):
+        m1 = Money(40000001, 'USD', 4)
+        m2 = Money(4000001, 'USD', 3)
+
+        assert m1 < m2
+
+    def test_varying_fractional_amounts_greater_than(self):
+        m1 = Money(40000101, 'USD', 3)
+        m2 = Money(4000002, 'USD', 2)
+
+        assert m1 > m2
+
+
 if __name__ == '__main__':
     unittest.main()

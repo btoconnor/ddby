@@ -70,7 +70,27 @@ class TestExchange(unittest.TestCase):
 
         assert expected == actual, "Actual {0} != {1}".format(
             expected, actual
-            )
+        )
+
+    def test_exchanging_to_same_currency_returns_same_value(self):
+        m = Money(400, 'USD')
+        exchange = static.StaticExchange({})
+
+        expected = m
+
+        actual = exchange.exchange_to(m, 'USD')
+
+        assert expected == actual
+
+    def test_exchanging_from_same_currency_returns_same_value(self):
+        m = Money(400, 'USD')
+        exchange = static.StaticExchange({})
+
+        expected = m
+
+        actual = exchange.exchange_from(m, 'USD')
+
+        assert expected == actual
 
 
 if __name__ == '__main__':

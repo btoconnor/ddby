@@ -119,25 +119,25 @@ class Money(object):
         self._assert_same_currency(other.currency)
         a, b = Money.normalize_precisions(self, other)
 
-        return (a.precise_amount < other.precise_amount)
+        return (a.precise_amount < b.precise_amount)
     
     def __gt__(self, other):
         self._assert_same_currency(other.currency)
         a, b = Money.normalize_precisions(self, other)
 
-        return (a.precise_amount > other.precise_amount)
+        return (a.precise_amount > b.precise_amount)
 
     def __lte__(self, other):
         self._assert_same_currency(other.currency)
         a, b = Money.normalize_precisions(self, other)
 
-        return (a.precise_amount <= other.precise_amount)
+        return (a.precise_amount <= b.precise_amount)
  
     def __gte__(self, other):
         self._assert_same_currency(other.currency)
         a, b = Money.normalize_precisions(self, other)
 
-        return (a.precise_amount >= other.precise_amount)
+        return (a.precise_amount >= b.precise_amount)
 
     def __str__(self):
         return u"{0}{1:.2f} {2}".format(

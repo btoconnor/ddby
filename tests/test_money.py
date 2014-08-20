@@ -93,5 +93,8 @@ class TestMoney(unittest.TestCase):
 
         assert expected == actual
 
+    def test_error_raised_with_bad_value_input(self):
+        self.assertRaises(ValueError, Money, 'banana', 'USD')
+
 if __name__ == '__main__':
     unittest.main()
