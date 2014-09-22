@@ -42,6 +42,25 @@ class TestMoney(unittest.TestCase):
         assert actual.precise_amount == expected.precise_amount
         assert actual.precision == expected.precision
 
+    def test_multipying_a_money_object(self):
+        m1 = Money(4500, 'USD')
+        m_amount = 2
+        
+        expected = Money(9000, 'USD')
+
+        actual = m1 * m_amount
+
+        assert actual == expected
+
+    def test_dividing_a_money_object(self):
+        m1 = Money(9000, 'USD')
+        m_amount = 2
+        
+        expected = Money(4500, 'USD')
+
+        actual = m1 / m_amount
+
+        assert actual == expected, "Actual not equal to expected: {0} :: {1}".format(actual, expected)
 
 if __name__ == '__main__':
     unittest.main()

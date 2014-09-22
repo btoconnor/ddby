@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import division
+
 from .currency import get_currency
 
 __all__ = ['Money']
@@ -105,6 +107,15 @@ class Money(object):
 
         return Money(a.precise_amount - b.precise_amount,
                        self.currency, a.precision)
+
+    def __mul__(self, amount):
+        return Money(self.precise_amount * amount, self.currency, self.precision)
+
+    def __div__(self, amount):
+        print self
+        print amount
+        print int(self.precise_amount / amount)
+        return Money(int(self.precise_amount / amount), self.currency, self.precision)
 
     def __eq__(self, other):
         self._assert_same_currency(other.currency)
