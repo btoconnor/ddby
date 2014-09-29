@@ -111,10 +111,10 @@ class Money(object):
     def __mul__(self, amount):
         return Money(self.precise_amount * amount, self.currency, self.precision)
 
+    def __rmul__(self, amount):
+        return Money(self.precise_amount * amount, self.currency, self.precision)
+
     def __div__(self, amount):
-        print self
-        print amount
-        print int(self.precise_amount / amount)
         return Money(int(self.precise_amount / amount), self.currency, self.precision)
 
     def __eq__(self, other):

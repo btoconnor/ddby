@@ -62,6 +62,22 @@ class TestMoney(unittest.TestCase):
 
         assert actual == expected, "Actual not equal to expected: {0} :: {1}".format(actual, expected)
 
+    def test_iadd(self):
+        m1 = Money(9000, 'USD')
+        add_amount = Money(3000, 'USD')
+
+        expected = Money(12000, 'USD')
+        m1 += add_amount
+        assert m1 == expected
+
+    def test_rmultiply(self):
+        m1 = Money(4500, 'USD')
+        m_amount = 2
+        expected = Money(9000, 'USD')
+        actual = m_amount * m1
+
+        assert actual == expected
+
 if __name__ == '__main__':
     unittest.main()
 
