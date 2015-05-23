@@ -107,7 +107,7 @@ easy it is to implement your own exchange, either from a database, a web api, or
 
 The MIT License (MIT)
 
-Copyright 2014 Brian O'Connor
+Copyright 2015 Brian O'Connor
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
