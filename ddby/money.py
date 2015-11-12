@@ -119,7 +119,9 @@ class Money(object):
         return Money(int(self.precise_amount / amount), self.currency, self.precision)
 
     def __eq__(self, other):
-        self._assert_same_currency(other.currency)
+        if self.currency != other.currency:
+            return False
+
         a, b = Money.normalize_precisions(self, other)
 
         return (a.precise_amount == b.precise_amount)

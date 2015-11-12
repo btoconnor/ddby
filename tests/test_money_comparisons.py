@@ -95,6 +95,12 @@ class TestMoneyComparison(unittest.TestCase):
 
         self.assertRaises(ValueError, m1.__lt__, m2)
 
+    def test_comparing_values_of_different_currencies_is_false(self):
+        m1 = Money(4000, 'USD')
+        m2 = Money(4000, 'EUR')
+
+        assert not m1 == m2
+
 
 if __name__ == '__main__':
     unittest.main()
