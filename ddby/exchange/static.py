@@ -2,6 +2,7 @@ from .base import Exchange
 
 __all__ = ['StaticExchange']
 
+
 class StaticExchange(Exchange):
 
     def __init__(self, values):

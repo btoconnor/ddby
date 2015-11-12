@@ -26,6 +26,26 @@ class TestMoneyComparison(unittest.TestCase):
 
         assert not m1 < m2
 
+    def test_equal_value_is_gte(self):
+        m1 = Money(200, 'USD')
+        assert m1 >= m1
+
+    def test_greater_value_is_gte(self):
+        m1 = Money(200, 'USD')
+        m2 = Money(300, 'USD')
+
+        assert m2 >= m1
+
+    def test_equal_value_is_lte(self):
+        m1 = Money(200, 'USD')
+        assert m1 >= m1
+
+    def test_less_value_is_lte(self):
+        m1 = Money(200, 'USD')
+        m2 = Money(300, 'USD')
+
+        assert m1 <= m2
+
     def test_values_differing_by_fractional_amounts_are_not_equal(self):
         m1 = Money(400, 'USD')
         m2 = Money(40001, 'USD', 4)
@@ -68,6 +88,12 @@ class TestMoneyComparison(unittest.TestCase):
         m2 = Money(4000002, 'USD', 2)
 
         assert m1 > m2
+
+    def test_comparing_different_currencies_raises_error(self):
+        m1 = Money(4000, 'USD')
+        m2 = Money(4000, 'EUR')
+
+        self.assertRaises(ValueError, m1.__lt__, m2)
 
 
 if __name__ == '__main__':

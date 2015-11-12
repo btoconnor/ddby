@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from .money import Money
 
+
 class Serializer(object):
     """Serialize a Money object for sending over the wire.
 

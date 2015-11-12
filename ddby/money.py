@@ -5,6 +5,7 @@ from .currency import get_currency
 
 __all__ = ['Money']
 
+
 class Money(object):
     "An object representing money"
 
@@ -99,14 +100,14 @@ class Money(object):
         a, b = Money.normalize_precisions(self, other)
 
         return Money(a.precise_amount + b.precise_amount,
-                       a.currency, a.precision)
+                     a.currency, a.precision)
 
     def __sub__(self, other):
         self._assert_same_currency(other.currency)
         a, b = Money.normalize_precisions(self, other)
 
         return Money(a.precise_amount - b.precise_amount,
-                       self.currency, a.precision)
+                     self.currency, a.precision)
 
     def __mul__(self, amount):
         return Money(self.precise_amount * amount, self.currency, self.precision)
@@ -131,20 +132,20 @@ class Money(object):
         a, b = Money.normalize_precisions(self, other)
 
         return (a.precise_amount < b.precise_amount)
-    
+
     def __gt__(self, other):
         self._assert_same_currency(other.currency)
         a, b = Money.normalize_precisions(self, other)
 
         return (a.precise_amount > b.precise_amount)
 
-    def __lte__(self, other):
+    def __le__(self, other):
         self._assert_same_currency(other.currency)
         a, b = Money.normalize_precisions(self, other)
 
         return (a.precise_amount <= b.precise_amount)
- 
-    def __gte__(self, other):
+
+    def __ge__(self, other):
         self._assert_same_currency(other.currency)
         a, b = Money.normalize_precisions(self, other)
 
@@ -155,12 +156,12 @@ class Money(object):
             self.currency.symbol,
             float(self), self.currency.code
         ).encode('utf-8')
-    
+
     def __unicode__(self):
         return u"{0}{1:.2f} {2}".format(
             self.currency.symbol,
             float(self), self.currency.code
-            )
+        )
 
     def __repr__(self):
         return u"Money<{0}, {1}, {2}>".format(
@@ -184,4 +185,3 @@ class Money(object):
             return int(amount * pow(10, precision))
         else:
             raise ValueError("Amount is not an int or float")
-            

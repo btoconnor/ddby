@@ -3,8 +3,10 @@ __all__ = ['get_currency', 'Currency']
 
 _CURRENCIES = {}
 
+
 def get_currency(currency_code):
     return _CURRENCIES[currency_code]
+
 
 class Currency(object):
     "Class representing a currency, such as USD, or GBP"

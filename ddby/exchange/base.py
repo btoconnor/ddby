@@ -3,6 +3,7 @@ from ..money import Money
 
 __all__ = ['Exchange']
 
+
 class Exchange(object):
     """Represents a money exchange.
 
