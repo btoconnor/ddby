@@ -7,7 +7,7 @@ try:
 except ImportError:
     pass # No 'develop' command, oh well.
 
-version = '0.1'
+version = '0.2'
 
 setup(name='ddby',
     version=version,
