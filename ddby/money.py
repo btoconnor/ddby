@@ -12,7 +12,7 @@ class Money(object):
     __slots__ = ['precise_amount', 'currency', 'precision']
 
     def __init__(self, amount, currency, precision=None):
-        if isinstance(currency, basestring):
+        if isinstance(currency, str):
             # Currency code was passed in.  Go look it up.
             currency = get_currency(currency)
 
@@ -115,7 +115,7 @@ class Money(object):
     def __rmul__(self, amount):
         return Money(self.precise_amount * amount, self.currency, self.precision)
 
-    def __div__(self, amount):
+    def __truediv__(self, amount):
         return Money(int(self.precise_amount / amount), self.currency, self.precision)
 
     def __eq__(self, other):
@@ -172,7 +172,7 @@ class Money(object):
             self.precision
         ).encode('utf-8')
 
-    def __nonzero__(self):
+    def __bool__(self):
         return bool(self.precise_amount)
 
     # Helper functions
