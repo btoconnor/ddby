@@ -13,9 +13,9 @@ Example:
 >>> from ddby import Money
 >>> m = Money(500, 'USD') # $5.00 USD
 
->>> print int(m)
+>>> print(int(m))
 500
->>> print float(m)
+>>> print(float(m))
 5.0
 ```
 
@@ -47,7 +47,7 @@ Example:
 >>> m1 = Money(50005, 'USD', precision=3) # We've got 3 precision units rather than a standard 2 for USD
 >>> m2 = Money(30005, 'USD', precision=3)
 >>> m3 = m1 + m2
->>> print m3.materialize()
+>>> print(m3.materialize())
 '$80.01 USD'
 ```
 
@@ -60,7 +60,7 @@ Example:
 >>> m1 = Money(50002, 'USD', precision=3)
 >>> m2 = Money(30002, 'USD', precision=3)
 >>> m3 = m1 + m2
->>> print m3.materialize()
+>>> print(m3.materialize())
 '$80.00 USD'
 ```
 
@@ -79,7 +79,7 @@ Example:
 >>> m = Money(500, 'USD') # $5.00 USD
 >>> exchange = static.StaticExchange(rates)
 
->>> print exchange.exchange_to(m, 'EUR')
+>>> print(exchange.exchange_to(m, 'EUR'))
 '€6.50 EUR'
 ```
 
