@@ -7,7 +7,7 @@ from ddby.exchange import static
 class TestExchange(unittest.TestCase):
 
     def test_exchanging_currencies(self):
-        m = Money(500, 'USD') # $5.00 USD
+        m = Money(500, 'USD')
         rates = {'USD': {'EUR': 1.3}}
 
         exchange = static.StaticExchange(rates)
@@ -19,7 +19,7 @@ class TestExchange(unittest.TestCase):
         assert expected == actual
 
     def test_symmetric_exchange(self):
-        m = Money(500, 'USD') # $5.00 USD
+        m = Money(500, 'USD')
         rates = {'EUR': {'USD': 0.7}}
 
         exchange = static.StaticExchange(rates)
@@ -31,7 +31,7 @@ class TestExchange(unittest.TestCase):
         assert expected == actual
 
     def test_exchanging_precision(self):
-        m = Money(500, 'USD') # $5.00 USD
+        m = Money(500, 'USD')
         rates = {'USD': {'JPY': 123.5}}
 
         exchange = static.StaticExchange(rates)
@@ -42,10 +42,10 @@ class TestExchange(unittest.TestCase):
 
         assert expected == actual, "Actual {0} != {1}".format(
             expected, actual
-            )
+        )
 
     def test_exchanging_precision_from_lower_to_higher_precision(self):
-        m = Money(100, 'JPY') # $5.00 USD
+        m = Money(100, 'JPY')
         rates = {'JPY': {'USD': 0.01}}
 
         exchange = static.StaticExchange(rates)
@@ -56,10 +56,10 @@ class TestExchange(unittest.TestCase):
 
         assert expected == actual, "Actual {0} != {1}".format(
             expected, actual
-            )
+        )
 
     def test_exchanging_precision_from(self):
-        m = Money(500, 'USD') # $5.00 USD
+        m = Money(500, 'USD')
         rates = {'JPY': {'USD': 0.01}}
 
         exchange = static.StaticExchange(rates)

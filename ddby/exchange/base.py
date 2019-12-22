@@ -4,7 +4,7 @@ from ..money import Money
 __all__ = ['Exchange']
 
 
-class Exchange(object):
+class Exchange:
     """Represents a money exchange.
 
     This exchanges a Money object from one currency to/from
@@ -67,14 +67,13 @@ class Exchange(object):
         500 * 1.235 = 617.5 JPY, rounded to 618 JPY.
         """
         if original.precision == desired.precision:
-            # The two currencies have the same precision, 
+            # The two currencies have the same precision,
             # we can avoid this whole computation
             return rate
 
-        return (rate * pow(10, (desired.precision - original.precision)))
+        return rate * pow(10, (desired.precision - original.precision))
 
     def get_rate(self, original, desired):
         """Get the rate in order to convert original
         currency to desired currency"""
         raise NotImplementedError
-

@@ -2,7 +2,7 @@
 from .money import Money
 
 
-class Serializer(object):
+class Serializer:
     """Serialize a Money object for sending over the wire.
 
     It is not recommended to use the utility of this class
@@ -35,6 +35,7 @@ class Serializer(object):
         except ValueError:
             raise ValueError("Amount {0} is not an integer".format(results[1]))
 
+        # TODO: Validate version
         version, amount, currency_code, precision = results
 
         return Money(

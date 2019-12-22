@@ -4,6 +4,11 @@ __all__ = ['StaticExchange']
 
 
 class StaticExchange(Exchange):
+    """An exchange utilizing static rates.
+
+    This can be used as an example implementation, or to recreate
+    rates that were valid at a particular point in time.
+    """
 
     def __init__(self, values):
         """Establish an exchange of static rates
